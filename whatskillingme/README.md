@@ -2,6 +2,8 @@
 
 A React Native Expo application that helps users track and understand how their daily lifestyle choices impact their lifespan.
 
+**WhatsKillingMe** addresses the challenge of understanding the precise impact of daily habits on longevity. Unlike traditional health apps that provide generic scores or vague feedback, this app quantifies exactly how each lifestyle choice affects your lifespan—down to the seconds, minutes, or years gained or lost. By translating scientific research into personalized, actionable metrics, users can make informed decisions about their health priorities, visualize the cumulative effects of their habits over time, and focus on changes that truly matter for their long-term wellbeing.
+
 <img src="./screenshots/dashboard.png" width="400" alt="WhatsKillingMe App">
 
 ## 📱 Features
