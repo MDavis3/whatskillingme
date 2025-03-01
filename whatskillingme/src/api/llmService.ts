@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { LogEntry } from '../types';
+import Constants from 'expo-constants';
 
-// Gemini API key - in production, this should be stored securely
-// and accessed through environment variables
-const API_KEY = 'AIzaSyDNg6Tj0UHd2IybxNK5RxJ9w8UXm-GrFh0';
+// Gemini API key - accessed through environment variables
+// The API key should be set in app.json or .env file and not committed to the repository
+const API_KEY = Constants.expoConfig?.extra?.geminiApiKey || process.env.GEMINI_API_KEY || '';
 const API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
 
 // The system prompt that guides the LLM's analysis
@@ -43,8 +44,8 @@ FORMAT YOUR RESPONSE AS JSON:
     }
   ],
   "netImpact": -0.0000057 // Overall estimated lifespan impact in years
-                        // Example: -0.0000057 years = -30 seconds
-                        // This should be very small for a single day's activities
+                         // Example: -0.0000057 years = -30 seconds
+                         // This should be very small for a single day's activities
 }
 
 ANALYSIS PRINCIPLES:
@@ -63,6 +64,11 @@ If you identify concerning patterns that could significantly impact lifespan (e.
 
 export const analyzeLogEntry = async (logContent: string): Promise<LogEntry> => {
   try {
+    // Check if API key is available
+    if (!API_KEY) {
+      throw new Error('Gemini API key is not configured. Please set it in your environment variables.');
+    }
+    
     // Prepare the request payload for Gemini API
     const payload = {
       contents: [
@@ -217,4 +223,4 @@ export const mockAnalyzeLogEntry = async (logContent: string): Promise<LogEntry>
 
 // For development, use the mock function
 // For production, use the real function
-export const analyzeLogEntryDev = __DEV__ ? mockAnalyzeLogEntry : analyzeLogEntry; 
+export const analyzeLogEntryDev = __DEV__ ? mockAnalyzeLogEntry : analyzeLogEntry;

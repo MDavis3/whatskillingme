@@ -29,6 +29,7 @@ A React Native Expo application that helps users track and understand how their 
 - Expo CLI
 - Android Studio (for Android development)
 - Xcode (for iOS development, macOS only)
+- Google Gemini API key (get one from [Google AI Studio](https://makersuite.google.com/app/apikey))
 
 ## 🛠️ Installation
 
@@ -45,12 +46,19 @@ A React Native Expo application that helps users track and understand how their 
    yarn install
    ```
 
-3. Start the development server:
+3. Set up environment variables:
+   - Copy `.env.example` to `.env`
+   - Add your Google Gemini API key to the `.env` file:
+     ```
+     GEMINI_API_KEY=your_api_key_here
+     ```
+
+4. Start the development server:
    ```bash
    npx expo start
    ```
 
-4. Follow the instructions in the terminal to open the app on your device or emulator.
+5. Follow the instructions in the terminal to open the app on your device or emulator.
 
 ## 📊 How It Works
 
@@ -71,6 +79,15 @@ A React Native Expo application that helps users track and understand how their 
   <img src="./screenshots/about%20yourself.png" width="400" alt="About Yourself">
   <img src="./screenshots/lifespan%20challenge.png" width="400" alt="Lifespan Challenge">
 </div>
+
+## 🔐 API Key Security
+
+This application uses the Google Gemini API for AI analysis. To protect your API key:
+
+1. Never commit your `.env` file to version control
+2. The `.gitignore` file is configured to exclude `.env` files
+3. For production deployments, use secure environment variables provided by your hosting platform
+4. Consider implementing API key rotation and monitoring for production use
 
 ## 🤝 Contributing
 
