@@ -2,7 +2,7 @@
 
 A React Native Expo application that helps users track and understand how their daily lifestyle choices impact their lifespan.
 
-<img src="./screenshots/dashboard.png" width="400" alt="WhatsKillingMe App">
+<img src="./whatskillingme/screenshots/dashboard.png" width="400" alt="WhatsKillingMe App">
 
 ## 📱 Features
 
@@ -63,13 +63,13 @@ A React Native Expo application that helps users track and understand how their 
 ## 📸 Screenshots
 
 <div align="center">
-  <img src="./screenshots/how_it_works.png" width="400" alt="How It Works">
-  <img src="./screenshots/dashboard.png" width="400" alt="Dashboard">
-  <img src="./screenshots/milestones.png" width="400" alt="Milestones">
-  <img src="./screenshots/history.png" width="400" alt="History">
-  <img src="./screenshots/health_conditions.png" width="400" alt="Health Conditions">
-  <img src="./screenshots/about%20yourself.png" width="400" alt="About Yourself">
-  <img src="./screenshots/lifespan%20challenge.png" width="400" alt="Lifespan Challenge">
+  <img src="./whatskillingme/screenshots/how_it_works.png" width="400" alt="How It Works">
+  <img src="./whatskillingme/screenshots/dashboard.png" width="400" alt="Dashboard">
+  <img src="./whatskillingme/screenshots/milestones.png" width="400" alt="Milestones">
+  <img src="./whatskillingme/screenshots/history.png" width="400" alt="History">
+  <img src="./whatskillingme/screenshots/health_conditions.png" width="400" alt="Health Conditions">
+  <img src="./whatskillingme/screenshots/about%20yourself.png" width="400" alt="About Yourself">
+  <img src="./whatskillingme/screenshots/lifespan%20challenge.png" width="400" alt="Lifespan Challenge">
 </div>
 
 ## 🤝 Contributing
