@@ -1,4 +1,4 @@
-# WhatsKillingMe - Longevity Tracking App
+# WhatsKillingMe - Longevity Tracking App (Currently Working On)
 
 A React Native Expo application that helps users track and understand how their daily lifestyle choices impact their lifespan.
 
