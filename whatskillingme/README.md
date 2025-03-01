@@ -2,7 +2,7 @@
 
 A React Native Expo application that helps users track and understand how their daily lifestyle choices impact their lifespan.
 
-![WhatsKillingMe App](./screenshots/app_preview.png)
+![WhatsKillingMe App](./screenshots/dashboard.png)
 
 ## 📱 Features
 
@@ -62,10 +62,13 @@ A React Native Expo application that helps users track and understand how their 
 
 ## 📸 Screenshots
 
+![How It Works](./screenshots/how_it_works.png)
 ![Dashboard](./screenshots/dashboard.png)
-![Log Entry](./screenshots/log_entry.png)
-![Results](./screenshots/results.png)
+![Milestones](./screenshots/milestones.png)
 ![History](./screenshots/history.png)
+![Health Conditions](./screenshots/health_conditions.png)
+![About Yourself](./screenshots/about%20yourself.png)
+![Lifespan Challenge](./screenshots/lifespan%20challenge.png)
 
 ## 🤝 Contributing
 
