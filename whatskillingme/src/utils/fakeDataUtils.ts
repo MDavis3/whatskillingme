@@ -1,3 +1,10 @@
+/*
+ * This file is not used in the simplified version of the app.
+ * It contains utilities for generating fake data for testing purposes.
+ * It has been commented out but preserved for future reference.
+ */
+
+/*
 import { LogEntry, LifestyleItem } from '../types';
 import { saveLogEntry, getAllLogEntries, deleteLogEntry } from './storageUtils';
 
@@ -18,125 +25,155 @@ const generateRandomDate = () => {
 const categories = ['sleep', 'diet', 'exercise', 'stress', 'social', 'habits', 'other'] as const;
 
 // Sample lifestyle items with positive impacts
-const positiveLifestyleItems: Partial<LifestyleItem>[] = [
+const positiveLifestyleItems = [
   {
-    description: "Went for a 30-minute run",
-    category: "exercise",
-    impact: 0.2, // ~73 days lifetime
+    description: 'Getting 8 hours of sleep',
+    category: 'sleep',
+    impact: 0.000019, // +10 minutes
     confidence: 0.9,
-    recommendations: ["Try to increase to 45 minutes for even better results"]
+    recommendations: ['Maintain consistent sleep schedule', 'Avoid screens before bed']
   },
   {
-    description: "Ate a balanced meal with vegetables",
-    category: "diet",
-    impact: 0.15, // ~55 days lifetime
-    confidence: 0.85,
-    recommendations: ["Add more leafy greens for additional benefits"]
-  },
-  {
-    description: "Meditated for 15 minutes",
-    category: "stress",
-    impact: 0.1, // ~36 days lifetime
+    description: 'Morning meditation for 15 minutes',
+    category: 'stress',
+    impact: 0.000019, // +10 minutes
     confidence: 0.8,
-    recommendations: ["Consider extending to 20 minutes daily"]
+    recommendations: ['Try guided meditation apps', 'Increase duration gradually']
   },
   {
-    description: "Got 8 hours of sleep",
-    category: "sleep",
-    impact: 0.25, // ~91 days lifetime
+    description: '30 minutes of moderate exercise',
+    category: 'exercise',
+    impact: 0.000038, // +20 minutes
     confidence: 0.95,
-    recommendations: ["Maintain consistent sleep schedule"]
+    recommendations: ['Aim for 150 minutes weekly', 'Mix cardio and strength training']
   },
   {
-    description: "Spent quality time with friends",
-    category: "social",
-    impact: 0.18, // ~66 days lifetime
+    description: 'Eating a vegetable-rich meal',
+    category: 'diet',
+    impact: 0.000029, // +15 minutes
+    confidence: 0.85,
+    recommendations: ['Aim for 5 servings of vegetables daily', 'Vary colors for diverse nutrients']
+  },
+  {
+    description: 'Quality time with friends',
+    category: 'social',
+    impact: 0.000019, // +10 minutes
     confidence: 0.75,
-    recommendations: ["Regular social interactions boost mental health"]
+    recommendations: ['Prioritize meaningful connections', 'Schedule regular social activities']
+  },
+  {
+    description: 'Reading for 30 minutes',
+    category: 'habits',
+    impact: 0.000010, // +5 minutes
+    confidence: 0.7,
+    recommendations: ['Choose engaging material', 'Make it a daily habit']
+  },
+  {
+    description: 'Drinking 8 glasses of water',
+    category: 'diet',
+    impact: 0.000019, // +10 minutes
+    confidence: 0.8,
+    recommendations: ['Carry a water bottle', 'Set hydration reminders']
   }
 ];
 
 // Sample lifestyle items with negative impacts
-const negativeLifestyleItems: Partial<LifestyleItem>[] = [
+const negativeLifestyleItems = [
   {
-    description: "Skipped exercise today",
-    category: "exercise",
-    impact: -0.15, // ~55 days lifetime
-    confidence: 0.8,
-    recommendations: ["Even a short 10-minute walk is better than nothing"]
-  },
-  {
-    description: "Had fast food for dinner",
-    category: "diet",
-    impact: -0.25, // ~91 days lifetime
+    description: 'Only sleeping 5 hours',
+    category: 'sleep',
+    impact: -0.000038, // -20 minutes
     confidence: 0.9,
-    recommendations: ["Try meal prepping to avoid last-minute unhealthy choices"]
+    recommendations: ['Prioritize sleep', 'Create a bedtime routine']
   },
   {
-    description: "Only slept 5 hours",
-    category: "sleep",
-    impact: -0.3, // ~110 days lifetime
-    confidence: 0.95,
-    recommendations: ["Aim for at least 7 hours of sleep"]
+    description: 'High stress workday',
+    category: 'stress',
+    impact: -0.000029, // -15 minutes
+    confidence: 0.8,
+    recommendations: ['Practice stress management techniques', 'Take short breaks']
   },
   {
-    description: "Worked late and felt stressed",
-    category: "stress",
-    impact: -0.2, // ~73 days lifetime
+    description: 'Sedentary day with no exercise',
+    category: 'exercise',
+    impact: -0.000038, // -20 minutes
     confidence: 0.85,
-    recommendations: ["Take short breaks every hour to reduce stress"]
+    recommendations: ['Incorporate movement breaks', 'Schedule exercise time']
   },
   {
-    description: "Smoked cigarettes",
-    category: "habits",
-    impact: -0.4, // ~146 days lifetime
-    confidence: 0.98,
-    recommendations: ["Consider nicotine replacement therapy to help quit"]
+    description: 'Fast food meal',
+    category: 'diet',
+    impact: -0.000048, // -25 minutes
+    confidence: 0.9,
+    recommendations: ['Prepare meals in advance', 'Choose healthier options when eating out']
+  },
+  {
+    description: 'Social isolation',
+    category: 'social',
+    impact: -0.000029, // -15 minutes
+    confidence: 0.75,
+    recommendations: ['Reach out to friends or family', 'Join community activities']
+  },
+  {
+    description: 'Excessive screen time',
+    category: 'habits',
+    impact: -0.000019, // -10 minutes
+    confidence: 0.7,
+    recommendations: ['Set screen time limits', 'Take regular breaks']
+  },
+  {
+    description: 'Alcohol consumption',
+    category: 'habits',
+    impact: -0.000057, // -30 minutes
+    confidence: 0.85,
+    recommendations: ['Limit alcohol intake', 'Have alcohol-free days']
   }
 ];
 
 // Generate a random lifestyle item
 const generateRandomLifestyleItem = (positive: boolean = Math.random() > 0.5): LifestyleItem => {
   const items = positive ? positiveLifestyleItems : negativeLifestyleItems;
-  const randomItem = items[Math.floor(Math.random() * items.length)];
+  const template = items[Math.floor(Math.random() * items.length)];
   
   return {
     id: generateId(),
-    description: randomItem.description || "",
-    category: randomItem.category || "other",
-    impact: randomItem.impact || 0,
-    confidence: randomItem.confidence || 0.8,
+    description: template.description,
+    category: template.category,
+    impact: template.impact,
+    confidence: template.confidence,
     interactions: [],
-    recommendations: randomItem.recommendations || [],
+    recommendations: template.recommendations,
+    sources: ['Research Journal of Health, 2023']
   };
 };
 
 // Generate a random log entry
 const generateRandomLogEntry = (): LogEntry => {
-  // Generate between 1-4 lifestyle items
-  const numItems = Math.floor(Math.random() * 4) + 1;
+  const isPositive = Math.random() > 0.5;
+  const itemCount = Math.floor(Math.random() * 3) + 1; // 1-3 items
   const items: LifestyleItem[] = [];
+  let netImpact = 0;
   
-  for (let i = 0; i < numItems; i++) {
-    items.push(generateRandomLifestyleItem());
+  for (let i = 0; i < itemCount; i++) {
+    const item = generateRandomLifestyleItem(isPositive);
+    items.push(item);
+    netImpact += item.impact;
   }
   
-  // Calculate net impact
-  const netImpact = items.reduce((sum, item) => sum + item.impact, 0);
-  
-  // Generate random content based on items
-  const content = items.map(item => item.description).join(". ") + ".";
-  
   const date = generateRandomDate();
-  const now = new Date().toISOString();
+  const dayActivities = isPositive 
+    ? ['I had a productive day', 'I felt energetic', 'I made healthy choices'] 
+    : ['I had a stressful day', 'I felt tired', 'I made some poor choices'];
+  
+  const randomActivity = dayActivities[Math.floor(Math.random() * dayActivities.length)];
   
   return {
     id: generateId(),
     date,
-    rawContent: content,
+    rawContent: `${randomActivity} today. ${items.map(item => item.description).join('. ')}.`,
     items,
     netImpact,
-    createdAt: now,
+    createdAt: date
   };
 };
 
@@ -148,7 +185,8 @@ export const generateRandomLogEntries = (count: number): LogEntry[] => {
     entries.push(generateRandomLogEntry());
   }
   
-  return entries;
+  // Sort by date, newest first
+  return entries.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 };
 
 // Save multiple fake log entries to storage
@@ -160,107 +198,116 @@ export const saveFakeLogEntries = async (count: number): Promise<void> => {
   }
 };
 
-// Clear all fake data
+// Clear all log entries from storage
 export const clearAllLogEntries = async (): Promise<void> => {
-  const logs = await getAllLogEntries();
+  const entries = await getAllLogEntries();
   
-  for (const log of logs) {
-    await deleteLogEntry(log.id);
+  for (const entry of entries) {
+    await deleteLogEntry(entry.id);
   }
 };
 
-// Generate a specific log entry with a very positive impact
+// Generate a positive log entry with specific content
 export const generatePositiveLogEntry = (): LogEntry => {
   const items: LifestyleItem[] = [
     {
       id: generateId(),
-      description: "Ran 5 miles and did strength training",
-      category: "exercise",
-      impact: 0.5, // ~182 days lifetime
+      description: 'Getting 8 hours of sleep',
+      category: 'sleep',
+      impact: 0.000019, // +10 minutes
       confidence: 0.9,
       interactions: [],
-      recommendations: ["Great job! Keep up this routine for maximum benefits."]
+      recommendations: ['Maintain consistent sleep schedule', 'Avoid screens before bed'],
+      sources: ['Walker, M. (2017). Why We Sleep: The New Science of Sleep and Dreams']
     },
     {
       id: generateId(),
-      description: "Ate a plant-based meal with lots of vegetables",
-      category: "diet",
-      impact: 0.4, // ~146 days lifetime
+      description: '30 minutes of moderate exercise',
+      category: 'exercise',
+      impact: 0.000038, // +20 minutes
+      confidence: 0.95,
+      interactions: [],
+      recommendations: ['Aim for 150 minutes weekly', 'Mix cardio and strength training'],
+      sources: ['American Heart Association (2018). Physical Activity Guidelines']
+    },
+    {
+      id: generateId(),
+      description: 'Eating a vegetable-rich meal',
+      category: 'diet',
+      impact: 0.000029, // +15 minutes
       confidence: 0.85,
       interactions: [],
-      recommendations: ["Consider adding more variety of vegetables for additional nutrients."]
-    },
-    {
-      id: generateId(),
-      description: "Practiced meditation and deep breathing",
-      category: "stress",
-      impact: 0.3, // ~110 days lifetime
-      confidence: 0.8,
-      interactions: [],
-      recommendations: ["Try extending your meditation session for even better results."]
+      recommendations: ['Aim for 5 servings of vegetables daily', 'Vary colors for diverse nutrients'],
+      sources: ['Harvard T.H. Chan School of Public Health (2021). The Nutrition Source']
     }
   ];
   
-  const netImpact = items.reduce((sum, item) => sum + item.impact, 0);
-  const content = "Today was a great day for my health. " + items.map(item => item.description).join(". ") + ".";
+  let netImpact = 0;
+  for (const item of items) {
+    netImpact += item.impact;
+  }
   
-  const date = generateRandomDate();
-  const now = new Date().toISOString();
+  const date = new Date().toISOString();
   
   return {
     id: generateId(),
     date,
-    rawContent: content,
+    rawContent: "I had a great day today. I slept 8 hours, went for a 30-minute jog, and had a salad for lunch.",
     items,
     netImpact,
-    createdAt: now,
+    createdAt: date
   };
 };
 
-// Generate a specific log entry with a very negative impact
+// Generate a negative log entry with specific content
 export const generateNegativeLogEntry = (): LogEntry => {
   const items: LifestyleItem[] = [
     {
       id: generateId(),
-      description: "Smoked a pack of cigarettes",
-      category: "habits",
-      impact: -1.0, // ~365 days lifetime
-      confidence: 0.98,
-      interactions: [],
-      recommendations: ["Consider nicotine replacement therapy to help quit smoking."]
-    },
-    {
-      id: generateId(),
-      description: "Consumed excessive alcohol",
-      category: "habits",
-      impact: -0.7, // ~255 days lifetime
+      description: 'Only sleeping 5 hours',
+      category: 'sleep',
+      impact: -0.000038, // -20 minutes
       confidence: 0.9,
       interactions: [],
-      recommendations: ["Try to limit alcohol consumption to moderate levels."]
+      recommendations: ['Prioritize sleep', 'Create a bedtime routine'],
+      sources: ['Walker, M. (2017). Why We Sleep: The New Science of Sleep and Dreams']
     },
     {
       id: generateId(),
-      description: "Ate fast food for all meals",
-      category: "diet",
-      impact: -0.5, // ~182 days lifetime
+      description: 'Sedentary day with no exercise',
+      category: 'exercise',
+      impact: -0.000038, // -20 minutes
       confidence: 0.85,
       interactions: [],
-      recommendations: ["Prepare healthy meals at home to avoid fast food."]
+      recommendations: ['Incorporate movement breaks', 'Schedule exercise time'],
+      sources: ['American Heart Association (2018). Physical Activity Guidelines']
+    },
+    {
+      id: generateId(),
+      description: 'Fast food meal',
+      category: 'diet',
+      impact: -0.000048, // -25 minutes
+      confidence: 0.9,
+      interactions: [],
+      recommendations: ['Prepare meals in advance', 'Choose healthier options when eating out'],
+      sources: ['Harvard T.H. Chan School of Public Health (2021). The Nutrition Source']
     }
   ];
   
-  const netImpact = items.reduce((sum, item) => sum + item.impact, 0);
-  const content = "Not a good day for my health habits. " + items.map(item => item.description).join(". ") + ".";
+  let netImpact = 0;
+  for (const item of items) {
+    netImpact += item.impact;
+  }
   
-  const date = generateRandomDate();
-  const now = new Date().toISOString();
+  const date = new Date().toISOString();
   
   return {
     id: generateId(),
     date,
-    rawContent: content,
+    rawContent: "Had a rough day today. Only got 5 hours of sleep, sat at my desk all day, and had fast food for dinner.",
     items,
     netImpact,
-    createdAt: now,
+    createdAt: date
   };
-}; 
+};
+*/ 

@@ -1,3 +1,7 @@
+// Simplified types for the Longevity Log app
+
+/*
+// Legacy types - commented out but preserved for future reference
 export interface LifestyleFactorImpact {
   factor: string;
   category: string;
@@ -83,17 +87,42 @@ export interface LifestyleItem {
   recommendations: string[];
   sources?: string[]; // Scientific sources/studies
 }
+*/
 
+// Current types used in the simplified app
 export interface LogEntry {
   id: string;
-  date: string; // ISO format
-  rawContent: string; // The original diary entry
-  items: LifestyleItem[];
-  netImpact: number; // Overall years gained/lost
-  createdAt: string;
+  timestamp: number; // Unix timestamp
+  text: string; // The user's log entry text
+  impactScore: ImpactScore | null; // Null when analysis is pending
 }
 
-// Challenge type
+export interface ImpactScore {
+  totalImpact: number; // In minutes of life (positive or negative)
+  factors: ImpactFactor[];
+  confidence: 'low' | 'medium' | 'high';
+  summary: string;
+}
+
+export interface ImpactFactor {
+  category: 'sleep' | 'nutrition' | 'exercise' | 'stress' | 'social' | 'substances' | 'other';
+  impact: number; // In minutes
+  description: string;
+  source?: StudyReference;
+  recommendations?: string[];
+}
+
+export interface StudyReference {
+  title: string;
+  authors?: string;
+  journal?: string;
+  year?: number;
+  url?: string;
+  summary: string;
+}
+
+/*
+// Legacy challenge types - commented out but preserved for future reference
 export interface Challenge {
   id: string;
   title: string;
@@ -107,7 +136,6 @@ export interface Challenge {
   isComplete: boolean;
 }
 
-// Streak type
 export interface Streak {
   id: string;
   userId: string;
@@ -116,41 +144,23 @@ export interface Streak {
   longestCount: number;
   lastUpdated: string;
 }
+*/
 
 // Navigation types
 export type RootStackParamList = {
-  Welcome: undefined;
-  Main: undefined;
-  Dashboard: undefined;
-  LogEntry: { date?: string; id?: string };
-  Results: { logId: string };
-  History: undefined;
-  Profile: undefined;
-  Questionnaire: {
-    sectionId: string;
-  };
-  Recommendations: {
-    factorId: string;
-  };
-  DailyLog: undefined;
-  Insights: undefined;
-  Community: undefined;
-  Challenges: undefined;
-  ChallengeDetail: {
-    challengeId: string;
-  };
-  MainTabs: undefined;
-  Onboarding1: undefined;
-  Onboarding2: undefined;
-  Onboarding3: undefined;
-  Onboarding4: undefined;
-  Onboarding5: undefined;
+  Home: undefined;
+  AddLog: undefined;
+  LogDetails: { logId: string };
+  Settings: undefined;
 };
 
+/*
+// Legacy navigation types - commented out but preserved for future reference
 export type MainTabParamList = {
   Dashboard: undefined;
   History: undefined;
   NewLog: undefined;
   Results: undefined;
   Profile: undefined;
-}; 
+};
+*/ 

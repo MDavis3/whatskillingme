@@ -1,3 +1,10 @@
+/*
+ * This file is not used in the simplified version of the app.
+ * It has been replaced by src/services/storageService.ts.
+ * It has been commented out but preserved for future reference.
+ */
+
+/*
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LogEntry } from '../types';
 
@@ -65,4 +72,5 @@ export const deleteLogEntry = async (id: string): Promise<boolean> => {
     console.error('Error deleting log entry:', error);
     return false;
   }
-}; 
+};
+*/ 
